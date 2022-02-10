@@ -3,11 +3,26 @@
 // }
 
 // clickbutton()
-let myLeads = [];
+// let myLeads = `["www.jojobaoil.com"]`
+// myLeads = JSON.parse(myLeads)
+// myLeads.push("www.epicleads.com")
+
+// console.log(myLeads)
+
+
+// let myLeads = [];
 let ulEl = document.getElementById("ul-el")
 const inputEl = document.getElementById("input-el")
 
 const inputBtn = document.getElementById("input-btn")
+
+// localStorage.setItem("myLeads", "www.examplelead.com")
+// console.log(localStorage.getItem("myLeads"))
+
+// localStorage.setItem("lead", "https://microsoft.com")
+console.log(localStorage.getItem("lead"))
+localStorage.clear()
+
 
 inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
