@@ -1,28 +1,27 @@
 // function saveLead() {
 //     console.log("Button clicked!")
 // }
-
 // clickbutton()
 // let myLeads = `["www.jojobaoil.com"]`
 // myLeads = JSON.parse(myLeads)
 // myLeads.push("www.epicleads.com")
-
 // console.log(myLeads)
-
-
-// let myLeads = [];
-let ulEl = document.getElementById("ul-el")
+let myLeads = []
 const inputEl = document.getElementById("input-el")
-
 const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+    // localStorage.setItem("myLeads", "www.examplelead.com")
+    // console.log(localStorage.getItem("myLeads"))
+    // localStorage.setItem("lead", "https://microsoft.com")
+    // console.log(localStorage.getItem("lead"))
+    // localStorage.clear()
 
-// localStorage.setItem("myLeads", "www.examplelead.com")
-// console.log(localStorage.getItem("myLeads"))
 
-// localStorage.setItem("lead", "https://microsoft.com")
-console.log(localStorage.getItem("lead"))
-localStorage.clear()
-
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+}
 
 inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
