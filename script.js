@@ -1,11 +1,3 @@
-// function saveLead() {
-//     console.log("Button clicked!")
-// }
-// clickbutton()
-// let myLeads = `["www.jojobaoil.com"]`
-// myLeads = JSON.parse(myLeads)
-// myLeads.push("www.epicleads.com")
-// console.log(myLeads)
 let myLeads = []
 let oldLeads = []
 const inputEl = document.getElementById("input-el")
@@ -14,23 +6,18 @@ const ulEl = document.getElementById("ul-el")
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 const deleteBtn = document.getElementById("delete-btn")
 const tabBtn = document.getElementById("tab-btn")
-const tabs = [
-        { url: "https://www.linkedin.com/in/per-harald-borgen/" }
-    ]
-    // localStorage.setItem("myLeads", "www.examplelead.com")
-    // console.log(localStorage.getItem("myLeads"))
-    // localStorage.setItem("lead", "https://microsoft.com")
-    // console.log(localStorage.getItem("lead"))
-    // localStorage.clear()
+
+
 
 tabBtn.addEventListener("click", function(e) {
-    // console.log(tabs[0].url)
-    myLeads.push(tabs[0].url)
-    localStorage.setItem("myLeads", JSON.stringify(myLeads))
-    render(myLeads)
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        console.log(tabs)
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads)
+    })
 })
 
-// console.log(leadsFromLocalStorage)
 
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
@@ -40,10 +27,6 @@ if (leadsFromLocalStorage) {
 function render(leads) {
     let listItems = ""
     for (let i = 0; i < leads.length; i++) {
-        // ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
-        // const li = document.createElement("li") //create element
-        // li.textContent = myLeads[i] // set textContent to element
-        // ulEl.append(li) // appending to ul
         listItems += `
         <li> 
         <a target="_blank" href="${leads[i]}">
